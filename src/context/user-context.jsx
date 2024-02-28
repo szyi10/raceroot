@@ -1,12 +1,11 @@
 import { useState, useEffect, createContext } from "react"
 import axios from "axios"
 import { useCookies } from "react-cookie"
-import axios from "axios"
 
 const UserContext = createContext({
   isLoggedIn: false,
   user: null,
-  login: (data) => {},
+  login: () => {},
   logout: () => {},
 })
 
