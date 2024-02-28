@@ -19,8 +19,6 @@ const createSendToken = (user, statusCode, res) => {
     ),
     secure: true,
     httpOnly: true,
-    domain: "https://raceroot.vercel.app/",
-    sameSite: "none",
   }
   if (process.env.NODE_ENV === "production") cookieOptions.secure = true
 
