@@ -17,7 +17,11 @@ const commentRouter = require("./routes/commentRoutes")
 const app = express()
 
 const corsOptions = {
-  origin: ["http://127.0.0.1:5173", "http://192.168.55.8:5173"],
+  origin: [
+    "http://127.0.0.1:5173",
+    "http://192.168.55.8:5173",
+    "https://raceroot.netlify.app/",
+  ],
   credentials: true,
 }
 
