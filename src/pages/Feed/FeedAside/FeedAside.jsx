@@ -14,7 +14,7 @@ const FeedAside = () => {
     const fetchPosts = async () => {
       const res = await axios({
         method: "GET",
-        url: "http://127.0.0.1:3000/api/v1/posts?limit=3",
+        url: `${import.meta.env.VITE_DATABASE_URL}/api/v1/posts?limit=3`,
         withCredentials: true,
       })
 
@@ -29,7 +29,7 @@ const FeedAside = () => {
     const fetchUsers = async () => {
       const res = await axios({
         method: "GET",
-        url: "http://127.0.0.1:3000/api/v1/users?limit=2",
+        url: `${import.meta.env.VITE_DATABASE_URL}/api/v1/users?limit=2`,
         withCredentials: true,
       })
 

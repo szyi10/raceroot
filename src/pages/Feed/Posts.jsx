@@ -2,35 +2,9 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { useLocation } from "react-router-dom"
 
-import { avatar1, avatar2 } from "../../assets/images"
 import { bottomNavLinks } from "../../config/constants"
 
 import Post from "./Post"
-
-const DUMMY_POSTS = [
-  {
-    id: 1,
-    title: "Hamilton joining Ferrari?",
-    text: `Yo, racing fam! 🚗💨 Did you hear the tea? Lewis Hamilton is ditching Mercedes and jumping into a Ferrari! 🤯 What even is life right now?! 
-    
-    Seven-time champ going from silver arrows to Ferrari red? 🤔 Mind blown! 🤯 Can you imagine that beast on the track? 🏁🔊 
-    
-    The pit lane gossip is insane! Is Ferrari gonna be the new dream team? 🤩 Or is it gonna be a hot mess? 🙈 I need all the deets, fam! 💬🕵️
-    
-    Buckle up, peeps! This ain't your average driver swap; it's a whole new era in F1! 🌟 Get ready for some wild races and even wilder drama! 🍿🎉`,
-    user: {
-      avatar: avatar1,
-    },
-  },
-  {
-    id: 2,
-    title: "What is the best livery so far?",
-    text: `After today's ferrari reaval what's you favourite livery so far?`,
-    user: {
-      avatar: avatar2,
-    },
-  },
-]
 
 const Posts = () => {
   const [posts, setPosts] = useState(null)
@@ -42,13 +16,12 @@ const Posts = () => {
       try {
         const res = await axios({
           method: "GET",
-          url: "http://127.0.0.1:3000/api/v1/posts",
+          url: `${import.meta.env.VITE_DATABASE_URL}/api/v1/posts`,
         })
 
         setPosts(res.data.data.data)
       } catch (error) {
         console.log(error)
-        toast.error(error.response.data.message)
       }
     }
     fetchPosts()

@@ -20,7 +20,7 @@ const CreatePost = () => {
     try {
       const res = await axios({
         method: "POST",
-        url: "http://127.0.0.1:3000/api/v1/posts",
+        url: `${import.meta.env.VITE_DATABASE_URL}/api/v1/posts`,
         data: {
           title: data.title,
           text: data.text,

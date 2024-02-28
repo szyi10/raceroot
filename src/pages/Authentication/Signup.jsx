@@ -15,7 +15,7 @@ const Signup = ({ changeMode }) => {
     try {
       const res = await axios({
         method: "POST",
-        url: "http://127.0.0.1:3000/api/v1/users/signup",
+        url: `${import.meta.env.VITE_DATABASE_URL}/api/v1/users/signup`,
         data: {
           name: data.username,
           email: data.email,
