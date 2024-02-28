@@ -22,6 +22,7 @@ const corsOptions = {
     "http://192.168.55.8:5173",
     "https://raceroot.netlify.app/",
   ],
+  methods: ["GET", "POST", "PATCH", "DELETE"],
   credentials: true,
 }
 
