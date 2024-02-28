@@ -10,7 +10,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (!hash) navigate("/auth#login")
-  }, [])
+  }, [hash, navigate])
 
   return (
     <main className="absolute top-0 left-0 h-screen w-full bg-white flex items-center justify-center">

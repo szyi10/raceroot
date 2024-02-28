@@ -29,7 +29,7 @@ const Login = ({ changeMode }) => {
           className: "text-slate-700 font-medium font-sans",
           progressClassName: "bg-green-600",
         })
-        // location.assign("/feed")
+        location.assign("/feed")
       }
     } catch (error) {
       console.log(error)
