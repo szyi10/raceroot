@@ -19,7 +19,6 @@ export const UserContextProvider = ({ children }) => {
     const verifyCookie = async () => {
       if (!cookies.jwt) {
         console.log("no jwt cookie found")
-        return
       }
 
       const res = await axios({
