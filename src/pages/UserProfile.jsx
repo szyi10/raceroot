@@ -17,7 +17,7 @@ const UserProfile = () => {
       try {
         const res = await axios({
           method: "GET",
-          url: `https://raceroot-node-server-b708fd8ea8ce.herokuapp.com/api/v1/users/${userId}`,
+          url: `${import.meta.env.VITE_DATABASE_URL}/api/v1/users/${userId}`,
           withCredentials: true,
         })
 
@@ -37,7 +37,9 @@ const UserProfile = () => {
       try {
         const res = await axios({
           method: "GET",
-          url: `http://127.0.0.1:3000/api/v1/posts?user[_id]=${userId}`,
+          url: `${
+            import.meta.env.VITE_DATABASE_URL
+          }/api/v1/posts?user[_id]=${userId}`,
           withCredentials: true,
         })
 
