@@ -20,7 +20,7 @@ The backend of [Raceroot](https://github.com/szyi10/raceroot-frontend) applicati
 
 <a name="api"></a>
 ## API Endpoints
-
+https://documenter.getpostman.com/view/19180706/2sA2rFTLw2
 
 ## Technologies
 The app is built using `Node.js`, `Express.js`, `Mongoose`.
@@ -35,7 +35,7 @@ $ npm start
 ```
 
 2. Create and configure `config.env` file in root folder:
-```
+```env
 NODE_ENV=development
 PORT=3000
 
