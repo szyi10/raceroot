@@ -17,8 +17,10 @@ const createSendToken = (user, statusCode, res) => {
     expiresIn: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
-    secure: false,
-    httpOnly: false,
+    secure: true,
+    httpOnly: true,
+    domain: "https://raceroot.vercel.app/",
+    sameSite: "none",
   }
   if (process.env.NODE_ENV === "production") cookieOptions.secure = true
 
@@ -194,7 +196,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 exports.logout = (req, res) => {
   res.cookie("jwt", "none", {
     expires: new Date(Date.now() + 5 * 1000),
-    httpOnly: false,
+    httpOnly: true,
   })
   res.status(200).json({ status: "success" })
 }
