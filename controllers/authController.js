@@ -17,10 +17,8 @@ const createSendToken = (user, statusCode, res) => {
     expiresIn: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
-    secure: true,
+    secure: false,
     httpOnly: false,
-    domain: "https://raceroot.netlify.app/",
-    sameSite: "none",
   }
   if (process.env.NODE_ENV === "production") cookieOptions.secure = true
 
