@@ -195,7 +195,9 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 exports.logout = (req, res) => {
   res.cookie("jwt", "none", {
     expires: new Date(Date.now() + 5 * 1000),
-    httpOnly: true,
+    secure: false,
+    httpOnly: false,
+    sameSite: "none",
   })
   res.status(200).json({ status: "success" })
 }
