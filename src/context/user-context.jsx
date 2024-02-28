@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext } from "react"
+import axios from "axios"
 import { useCookies } from "react-cookie"
 import axios from "axios"
 
@@ -38,7 +39,13 @@ export const UserContextProvider = ({ children }) => {
     setUser(data)
   }
 
-  const logoutHandler = () => {
+  const logoutHandler = async () => {
+    await axios({
+      method: "GET",
+      url: `${import.meta.env.VITE_DATABASE_URL}/api/v1/users/logout`,
+      withCredentials: true,
+    })
+
     removeCookie("jwt")
     setIsLoggedIn(false)
     setUser(null)
