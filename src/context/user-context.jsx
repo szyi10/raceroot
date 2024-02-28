@@ -45,10 +45,9 @@ export const UserContextProvider = ({ children }) => {
       withCredentials: true,
     })
 
-    // removeCookie("jwt")
-    // setIsLoggedIn(false)
-    // setUser(null)
-    // location.reload(true)
+    setIsLoggedIn(false)
+    setUser(null)
+    location.reload(true)
   }
 
   const contextValue = {
