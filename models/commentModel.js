@@ -29,7 +29,7 @@ commentSchema.index({ tour: 1, user: 1 })
 commentSchema.pre(/^find/, function (next) {
   this.populate({
     path: "user",
-    select: "name displayName",
+    select: "name displayName photo",
   })
   next()
 })

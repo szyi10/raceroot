@@ -1,3 +1,4 @@
+const path = require("path")
 const express = require("express")
 const morgan = require("morgan")
 const rateLimit = require("express-rate-limit")
@@ -13,8 +14,11 @@ const globalErrorHandler = require("./controllers/errorController")
 const userRouter = require("./routes/userRoutes")
 const postRouter = require("./routes/postRoutes")
 const commentRouter = require("./routes/commentRoutes")
+const newsRouter = require("./routes/newsRoutes")
 
 const app = express()
+
+app.use(express.static(path.join(__dirname, "public")))
 
 const corsOptions = {
   origin: [
@@ -26,7 +30,7 @@ const corsOptions = {
 }
 
 const limiter = rateLimit({
-  max: 1000,
+  max: 100,
   windowMs: 60 * 60 * 1000,
   message: "Too many requests from this IP, please try again in an hour!",
 })
@@ -58,6 +62,7 @@ app.use((req, res, next) => {
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/posts", postRouter)
 app.use("/api/v1/comments", commentRouter)
+app.use("/api/v1/news", newsRouter)
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404))

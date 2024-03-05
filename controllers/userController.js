@@ -1,7 +1,31 @@
+const multer = require("multer")
+const sharp = require("sharp")
 const User = require("./../models/userModel")
 const catchAsync = require("./../utils/catchAsync")
 const AppError = require("./../utils/appError")
 const factory = require("./handlerFactory")
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/img/users")
+  },
+  filename: (req, file, cb) => {
+    const ext = file.mimetype.split("/")[1]
+    cb(null, `user-${req.user.id}-${Date.now()}.${ext}`)
+  },
+})
+
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith("image")) {
+    cb(null, true)
+  } else {
+    cb(null, false)
+  }
+}
+
+const upload = multer({ storage, fileFilter })
+
+exports.uploadUserPhoto = upload.single("photo")
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {}
@@ -34,6 +58,10 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     "displayName",
     "likedPosts"
   )
+  if (req.file) {
+    // console.log(req.file)
+    filteredBody.photo = req.file.filename
+  }
 
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
     new: true,
