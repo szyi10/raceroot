@@ -73,7 +73,7 @@ const Settings = () => {
               </label>
               <div className="flex items-center justify-center h-40 w-40">
                 <label className="relative flex flex-col items-center justify-center w-full h-40 rounded-full cursor-pointer hover:bg-blue-100 dark:border-neutral-800 dark:hover:bg-neutral-900 transition-colors">
-                  <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                  <div className="flex flex-col items-center justify-center pt-5 pb-6 overflow-hidden">
                     <p className="mb-2 text-sm text-slate-500 dark:text-slate-400">
                       <span className="font-semibold">Click to upload</span>
                     </p>
@@ -82,7 +82,7 @@ const Settings = () => {
                     src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
                       user.data.photo
                     }`}
-                    className="absolute top-0 left-0 -z-10 opacity-50 rounded-full"
+                    className="absolute top-0 left-0 -z-10 opacity-50 rounded-full w-full h-full"
                   />
                   <input
                     ref={ref}

@@ -69,7 +69,7 @@ const FeedAside = () => {
             {newPeople.map((user) => (
               <div key={user._id} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 bg-red-400 rounded-full">
+                  <div className="w-10 h-10 rounded-full">
                     <img
                       src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
                         user.photo

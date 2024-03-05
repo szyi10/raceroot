@@ -76,7 +76,7 @@ const Navbar = () => {
               </Link>
               <button
                 onClick={handleToggle}
-                className="aspect-square object-cover rounded-full cursor-pointer w-10 h-10 bg-sky-300 flex items-center justify-center overflow-hidden"
+                className="aspect-square object-cover rounded-full cursor-pointer w-10 h-10 flex items-center justify-center overflow-hidden"
               >
                 <img
                   src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
