@@ -1,21 +1,41 @@
+import { useRef } from "react"
 import { useContext } from "react"
 import axios from "axios"
 import { useForm } from "react-hook-form"
 import { Link } from "react-router-dom"
 
 import UserContext from "../context/user-context"
-import { avatar1 } from "../assets/images"
 
 const Settings = () => {
+  const ref = useRef()
   const { user } = useContext(UserContext)
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
+  const { register, handleSubmit } = useForm()
 
-  const formSubmit = (data) => {
+  const formSubmit = async (data) => {
+    console.log(ref.current.files[0])
+
     console.log(data)
+    try {
+      const res = await axios({
+        method: "PATCH",
+        url: `${import.meta.env.VITE_DATABASE_URL}/api/v1/users/updateMe`,
+        data: {
+          displayName: data.displayName,
+          bio: data.bio,
+          email: data.email,
+          name: data.name,
+          photo: ref.current.files[0],
+        },
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      })
+
+      console.log(res)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   if (!user) return
@@ -24,17 +44,17 @@ const Settings = () => {
 
   return (
     <main className="max-w-6xl mx-auto px-4 w-full min-h-screen my-6 justify-between items-start flex">
-      <div className="max-w-4xl w-full flex flex-col gap-6 mx-auto p-8 md:border md:border-gray-200 md:rounded-lg">
+      <div className="max-w-4xl w-full flex flex-col gap-6 mx-auto p-8 md:border md:border-gray-200 dark:border-neutral-800 md:rounded-lg">
         <form
           onSubmit={handleSubmit(formSubmit)}
           className="flex flex-row flex-wrap w-full"
         >
           <div className="w-full lg:w-1/2 lg:pr-10">
-            <h4 className="mb-5 text-xl font-bold text-slate-900">
+            <h4 className="mb-5 text-xl font-bold text-slate-900 dark:text-slate-200">
               Basic Info
             </h4>
             <div className="mb-6">
-              <label className="block mb-2 text-sm font-semibold text-slate-900">
+              <label className="block mb-2 text-sm font-semibold text-slate-900 dark:text-slate-200">
                 Display Name
               </label>
               <input
@@ -48,17 +68,34 @@ const Settings = () => {
               />
             </div>
             <div className="mb-6">
-              <label className="block mb-2 text-sm font-semibold text-slate-900">
+              <label className="block mb-2 text-sm font-semibold text-slate-900 dark:text-slate-200">
                 Profile Photo
               </label>
-              <div className="relative w-40 h-40 bg-slate-100 rounded-full shadow-xl">
-                <div className="overflow-hidden rounded-full h-40 w-40">
-                  <img src={avatar1} alt="" />
-                </div>
+              <div className="flex items-center justify-center h-40 w-40">
+                <label className="relative flex flex-col items-center justify-center w-full h-40 rounded-full cursor-pointer hover:bg-blue-100 dark:border-neutral-800 dark:hover:bg-neutral-900 transition-colors">
+                  <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                    <p className="mb-2 text-sm text-slate-500 dark:text-slate-400">
+                      <span className="font-semibold">Click to upload</span>
+                    </p>
+                  </div>
+                  <img
+                    src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
+                      user.data.photo
+                    }`}
+                    className="absolute top-0 left-0 -z-10 opacity-50 rounded-full"
+                  />
+                  <input
+                    ref={ref}
+                    type="file"
+                    className="hidden"
+                    accept="image/*"
+                    name="photo"
+                  />
+                </label>
               </div>
             </div>
             <div className="mb-6">
-              <label className="block mb-2 text-sm font-semibold text-slate-900">
+              <label className="block mb-2 text-sm font-semibold text-slate-900 dark:text-slate-200">
                 Display Name
               </label>
               <textarea
@@ -74,11 +111,11 @@ const Settings = () => {
             </div>
           </div>
           <div className="w-full lg:w-1/2">
-            <h4 className="mb-5 text-xl font-bold text-slate-900">
+            <h4 className="mb-5 text-xl font-bold text-slate-900 dark:text-slate-200">
               Profile Identity
             </h4>
             <div className="mb-6">
-              <label className="block mb-2 text-sm font-semibold text-slate-900">
+              <label className="block mb-2 text-sm font-semibold text-slate-900 dark:text-slate-200">
                 Name
               </label>
               <input
@@ -92,7 +129,7 @@ const Settings = () => {
               />
             </div>
             <div className="mb-6">
-              <label className="block mb-2 text-sm font-semibold text-slate-900">
+              <label className="block mb-2 text-sm font-semibold text-slate-900 dark:text-slate-200">
                 Email Address
               </label>
               <input

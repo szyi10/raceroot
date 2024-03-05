@@ -49,16 +49,18 @@ const CreatePost = () => {
     <main className="max-w-6xl mx-auto px-4 w-full min-h-screen my-6 justify-between items-start flex">
       <form
         onSubmit={handleSubmit(formSubmit)}
-        className="max-w-[728px] w-full flex flex-col gap-6 mx-auto py-6 px-4 md:border md:border-gray-200 md:rounded-lg"
+        className="max-w-[728px] w-full flex flex-col gap-6 mx-auto py-6 px-4 md:border md:border-gray-200 dark:border-neutral-800 md:rounded-lg"
       >
         <div>
-          <h2 className="text-2xl font-semibold text-slate-700">
+          <h2 className="text-2xl font-semibold text-slate-700 dark:text-slate-200">
             Create a Post
           </h2>
         </div>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-1 w-full relative">
-            <label className="font-semibold">Title</label>
+            <label className="font-semibold text-slate-900 dark:text-slate-300">
+              Title
+            </label>
             <input
               {...register("title", {
                 required: true,
@@ -87,7 +89,9 @@ const CreatePost = () => {
             )}
           </div>
           <div className="flex flex-col gap-1 w-full relative">
-            <label className="font-semibold">Text</label>
+            <label className="font-semibold text-slate-900 dark:text-slate-300">
+              Text
+            </label>
             <textarea
               {...register("text", {
                 required: true,
@@ -112,7 +116,7 @@ const CreatePost = () => {
           </div>
         </div>
         <div className="flex items-center gap-2 justify-end">
-          <button type="reset" className="button-ghost">
+          <button type="reset" className="button-ghost dark:text-slate-400">
             Cancel
           </button>
           <button type="submit" className="button-primary">

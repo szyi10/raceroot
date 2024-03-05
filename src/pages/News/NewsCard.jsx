@@ -1,8 +1,18 @@
+import { Link } from "react-router-dom"
 import { time, readMore } from "../../assets/icons"
 
 const NewsCard = ({ data }) => {
+  const formattedDate = new Date(data.createdAt).toLocaleString("en-us", {
+    hour: "2-digit",
+    hourCycle: "h24",
+    minute: "2-digit",
+    month: "numeric",
+    day: "numeric",
+    year: "numeric",
+  })
+
   return (
-    <article className="rounded-lg overflow-hidden border border-gray-200 shadow-sm flex flex-col">
+    <article className="rounded-lg overflow-hidden border border-gray-200 dark:border-neutral-800 shadow-sm flex flex-col">
       <img
         src={data.img}
         alt={data.title}
@@ -14,25 +24,25 @@ const NewsCard = ({ data }) => {
         <span className="bg-blue-200 text-blue-600 font-medium px-3 py-1 rounded-lg text-sm">
           {data.tag}
         </span>
-        <h2 className="text-2xl leading-[1em] text-slate-900 font-extrabold">
+        <h2 className="text-2xl leading-[1em] text-slate-900 font-extrabold dark:text-slate-300">
           {data.title}
         </h2>
-        <p className="text-slate-500">{data.subtitle}</p>
+        <p className="text-slate-500 dark:text-slate-400">{data.subtitle}</p>
         <div className="flex w-full items-center justify-between text-sm text-slate-400 mt-2">
           <div className="flex items-center gap-1">
             <img src={time} alt="Time to read" width={20} height={20} />
             <p>{data.minutesToRead} min read</p>
           </div>
 
-          <p>{data.createdAt}</p>
+          <p>{formattedDate}</p>
         </div>
-        <a
-          href="#"
+        <Link
+          to={`/news/${data._id}`}
           className="text-lg font-medium text-blue-600 flex items-center gap-1"
         >
           Read more
           <img src={readMore} alt="Read more" width={24} height={24} />
-        </a>
+        </Link>
       </div>
     </article>
   )

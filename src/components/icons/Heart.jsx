@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge"
 
 const Heart = ({ color }) => {
   return (
-    <div className="group/heart hover:bg-red-100 p-1 rounded-full">
+    <div className="group/heart hover:bg-red-100 dark:hover:bg-red-950 p-1 rounded-full">
       <svg
         className="w-6 h-6 text-gray-800 dark:text-white"
         aria-hidden="true"

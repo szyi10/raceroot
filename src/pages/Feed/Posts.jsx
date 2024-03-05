@@ -33,9 +33,10 @@ const Posts = () => {
     )[0]
     currentLink.active = true
     setCurrentPath(currentLink)
-  }, [])
+  }, [location.pathname])
 
-  if (!posts) return <p className="font-medium">No posts found.</p>
+  if (!posts)
+    return <p className="font-mediumtext-slate-500">No posts found.</p>
   if (!currentPath) return
 
   return (

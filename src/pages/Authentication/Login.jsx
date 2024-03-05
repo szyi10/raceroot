@@ -95,7 +95,7 @@ const Login = ({ changeMode }) => {
                     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                 })}
                 type="text"
-                className={`input ${
+                className={`input dark:bg-slate-200  dark:focus:bg-blue-100 dark:text-slate-800 ${
                   errors?.email && "bg-red-200 focus:bg-red-200"
                 }`}
               />
@@ -117,7 +117,7 @@ const Login = ({ changeMode }) => {
                   required: true,
                 })}
                 type="password"
-                className={`input ${
+                className={`input dark:bg-slate-200  dark:focus:bg-blue-100 dark:text-slate-800 ${
                   errors?.password?.type === "required" &&
                   "bg-red-200 focus:bg-red-200"
                 }`}

@@ -4,16 +4,11 @@ import { useForm } from "react-hook-form"
 import { useParams } from "react-router-dom"
 import { toast } from "react-toastify"
 
-import { avatar2 } from "../../../assets/images"
 import Comment from "./Comment"
 
 const Comments = ({ data }) => {
   const [isFormOpened, setIsFormOpened] = useState(false)
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
+  const { register, handleSubmit } = useForm()
   const { id } = useParams()
 
   const openForm = () => setIsFormOpened(true)
@@ -52,11 +47,16 @@ const Comments = ({ data }) => {
       {!isFormOpened && (
         <button
           onClick={openForm}
-          className="flex flex-col gap-4 rounded-lg border border-slate-200 p-4"
+          className="flex flex-col gap-4 rounded-lg border border-slate-200 dark:border-neutral-800 p-4"
         >
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 ">
             <div className="flex items-center justify-center bg-green-500 cursor-pointer w-8 h-8 rounded-full overflow-hidden">
-              <img src={avatar2} alt="Avatar" />
+              <img
+                src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
+                  data.user.photo
+                }`}
+                alt="Avatar"
+              />
             </div>
             <span className="text-slate-400 text-sm leading-5">
               Add a toughtful comment
@@ -67,7 +67,7 @@ const Comments = ({ data }) => {
       {isFormOpened && (
         <form
           onSubmit={handleSubmit(formSubmit)}
-          className="flex flex-col gap-4 rounded-lg border border-slate-200 p-4"
+          className="flex flex-col gap-4 rounded-lg border border-slate-200 dark:border-neutral-800 p-4"
         >
           <div className="flex flex-col gap-2">
             <span className="text-xs font-medium text-slate-400">
@@ -80,13 +80,13 @@ const Comments = ({ data }) => {
                 maxLength: "1000",
               })}
               type="text"
-              className="input leading-5 bg-transparent focus:bg-transparent px-0 resize-y"
+              className="input leading-5 bg-transparent focus:bg-transparent px-0 resize-y dark:text-slate-300"
             />
             <div className="flex gap-2 items-center justify-end">
               <button
                 onClick={closeForm}
                 type="button"
-                className="button-ghost"
+                className="button-ghost dark:text-slate-400"
               >
                 Cancel
               </button>
@@ -98,7 +98,7 @@ const Comments = ({ data }) => {
         </form>
       )}
       <div className="flex flex-col gap-5">
-        <h2 className="text-lg leading-7 font-semibold text-slate-700">
+        <h2 className="text-lg leading-7 font-semibold text-slate-700 dark:text-slate-400">
           {data.comments.length} comments
         </h2>
       </div>

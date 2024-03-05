@@ -5,31 +5,26 @@ import { twMerge } from "tailwind-merge"
 import UserContext from "../context/user-context"
 import UIContext from "../context/ui-context"
 
-import {
-  pen,
-  myPosts,
-  messages,
-  logout,
-  settings,
-  support,
-} from "../assets/icons"
-import { avatar1 } from "../assets/images"
+import { MyPosts, Messages, Settings, Support } from "./icons"
+import { pen, logout } from "../assets/icons"
 
 const Button = ({ href, icon, label, onClick }) => {
   return (
     <Link
       onClick={onClick}
       to={href}
-      className="w-full focus:outline-none focus:bg-slate-100 hover:bg-slate-100 py-2 px-4 flex gap-2"
+      className="w-full focus:outline-none focus:bg-slate-100 hover:bg-slate-100 py-2 px-4 flex gap-2 dark:focus:bg-neutral-800 dark:hover:bg-neutral-800"
     >
       <div className="flex items-center gap-2">
-        <div className="hidden sm:block">
-          <img src={icon} alt={label} width={20} height={20} />
+        <div className="hidden sm:block w-5 h-5">
+          <div className="flex">{icon}</div>
         </div>
-        <div className="sm:hidden block">
-          <img src={icon} alt={label} width={24} height={24} />
+        <div className="sm:hidden block w-6 h-6">
+          <div className="flex">{icon}</div>
         </div>
-        <p className="truncate text-slate-600 sm:text-sm">{label}</p>
+        <p className="truncate text-slate-600 sm:text-sm dark:text-slate-400">
+          {label}
+        </p>
       </div>
     </Link>
   )
@@ -47,7 +42,7 @@ const ProfilePopper = () => {
 
   if (!userCtx.user) return
 
-  const { name, displayName, _id } = userCtx.user.data
+  const { name, displayName, _id, photo } = userCtx.user.data
 
   return (
     <>
@@ -69,32 +64,38 @@ const ProfilePopper = () => {
         )}
       >
         <div onClick={handleClickOutside} className="hidden sm:block w-full" />
-        <div className="w-full sm:w-max sm:max-w-72 bg-white rounded-lg overflow-hidden border-b border border-gray-200 flex flex-col gap-2 py-2">
+        <div className="w-full sm:w-max sm:max-w-72 bg-white rounded-lg overflow-hidden border-b border border-gray-200 flex flex-col gap-2 py-2 dark:bg-neutral-900 dark:border-neutral-800">
           <Link
             onClick={close}
             to={`/user/${_id}`}
-            className="w-full focus:outline-none focus:bg-slate-100 hover:bg-slate-100 py-2 px-4"
+            className="w-full focus:outline-none focus:bg-slate-100 hover:bg-slate-100 py-2 px-4 dark:focus:bg-neutral-800 dark:hover:bg-neutral-800"
           >
             <div className="flex gap-3">
               <div className="aspect-square object-cover rounded-full cursor-pointer w-12 h-12 bg-sky-300 flex items-center justify-center overflow-hidden">
-                <img src={avatar1} width={48} height={48} />
+                <img
+                  src={`${
+                    import.meta.env.VITE_DATABASE_URL
+                  }/img/users/${photo}`}
+                  width={48}
+                  height={48}
+                />
               </div>
               <div className="flex flex-col flex-1 min-w-0 justify-between items-center">
-                <p className="w-full text-base truncate font-bold text-slate-700">
+                <p className="w-full text-base truncate font-bold text-slate-700 dark:text-slate-200">
                   {displayName ? displayName : name}
                 </p>
-                <p className="text-sm font-medium truncate text-slate-500 w-full">
+                <p className="text-sm font-medium truncate text-slate-500 w-full dark:text-slate-400">
                   @{name}
                 </p>
               </div>
             </div>
           </Link>
 
-          <div className="h-px bg-slate-200" />
+          <div className="h-px bg-slate-200 dark:bg-neutral-800" />
 
           <Link
             to={"/become-a-journalist"}
-            className="w-full focus:outline-none focus:bg-slate-100 hover:bg-slate-100 py-2 px-4 flex gap-2"
+            className="w-full focus:outline-none focus:bg-slate-100 hover:bg-slate-100 py-2 px-4 flex gap-2 dark:focus:bg-neutral-800 dark:hover:bg-neutral-800"
           >
             <div className="hidden sm:block mt-[0.5px] w-8 h-8">
               <img src={pen} alt="Pen icon" width={20} height={20} />
@@ -103,43 +104,43 @@ const ProfilePopper = () => {
               <p className="flex-1 text-base sm:text-sm font-semibold text-blue-600">
                 Become a journalist
               </p>
-              <p className="text-base sm:text-sm text-slate-600">
+              <p className="text-base sm:text-sm text-slate-600 dark:text-slate-400">
                 Join our journalist team and write news for us.
               </p>
             </div>
           </Link>
 
-          <div className="h-px bg-slate-200" />
+          <div className="h-px bg-slate-200 dark:bg-neutral-800" />
 
           <Button
             href={`/user/${_id}#posts`}
             onClick={close}
-            icon={myPosts}
+            icon={<MyPosts />}
             label="My Posts"
           />
           <Button
             href={`/messages`}
             onClick={close}
-            icon={messages}
+            icon={<Messages />}
             label="Messages"
           />
           <Button
             href={`/settings`}
             onClick={close}
-            icon={settings}
+            icon={<Settings />}
             label="Settings"
           />
 
-          <div className="h-px bg-slate-200" />
+          <div className="h-px bg-slate-200 dark:bg-neutral-800" />
 
           <Button
             href={`/support-and-feedback`}
-            icon={support}
+            icon={<Support />}
             label="Support and feedback"
           />
           <button
             onClick={userCtx.logout}
-            className="w-full focus:outline-none focus:bg-slate-100 hover:bg-slate-100 py-2 px-4 flex gap-2"
+            className="w-full focus:outline-none focus:bg-slate-100 hover:bg-slate-100 py-2 px-4 flex gap-2 dark:focus:bg-neutral-800 dark:hover:bg-neutral-800"
           >
             <div className="flex items-center gap-2">
               <div className="hidden sm:block">

@@ -5,7 +5,7 @@ import UIContext from "../context/ui-context"
 
 import { close } from "../assets/icons"
 
-const MobileNav = ({ menuOpened, setMenuOpened }) => {
+const MobileNav = () => {
   const uiCtx = useContext(UIContext)
 
   const handleCloseMenu = () => uiCtx.setMenu(false)
@@ -28,7 +28,13 @@ const MobileNav = ({ menuOpened, setMenuOpened }) => {
       >
         <div className="flex items-center justify-between border-b border-slate-200 shadow-sm p-4 min-h-[80px]">
           <a href="/" className="flex items-center gap-2 cursor-pointer">
-            <img src="logo.svg" alt="Raceroot" height={35} width={35} />
+            <img
+              src="/logo.svg"
+              alt="Raceroot"
+              height={35}
+              width={35}
+              loading="lazy"
+            />
             <span className="font-extrabold text-3xl text-gray-900 font-kanit tracking-wide">
               raceroot
             </span>

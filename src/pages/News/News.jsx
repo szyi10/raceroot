@@ -1,45 +1,49 @@
+import { useState, useEffect } from "react"
+import axios from "axios"
+import { useLocation } from "react-router-dom"
+
 import { Helmet } from "react-helmet-async"
 import BigNews from "./BigNews"
 import NewsGrid from "./NewsGrid"
+import CategoryBar from "./CategoryBar"
 
 const News = () => {
+  const [news, setNews] = useState(null)
+  const [bigNews, setBigNews] = useState(null)
+  const { search } = useLocation()
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const res = await axios({
+          method: "GET",
+          url: `${import.meta.env.VITE_DATABASE_URL}/api/v1/news${
+            search && search
+          }`,
+        })
+        const data = await res.data.data.data
+
+        data.map((news) => {
+          if (news.isBigNews) {
+            setBigNews(news)
+          }
+        })
+        setNews(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchNews()
+  }, [search])
+
   return (
     <main className="relative min-h-screen w-full overflow-hidden">
       <Helmet>
         <title>Raceroot - stay in the fast lane with the latest updates!</title>
       </Helmet>
-      <BigNews />
-      <section className="max-container px-4 my-8">
-        <div className="bg-blue-200 w-full h-12 rounded-lg overflow-hidden flex">
-          <a
-            href="#"
-            className="bg-blue-600 px-4 flex items-center font-medium text-white relative mr-4"
-          >
-            <span className="z-10">News</span>
-            <div className="bg-blue-600 absolute w-12 h-full -top-1/2 translate-y-1/2 -right-3.5 rotate-45"></div>
-          </a>
-          <a
-            href="#"
-            className="px-4 flex items-center text-sm font-semibold text-slate-900 hover:text-slate-500"
-          >
-            <span className="block sm:hidden">F1</span>
-            <span className="hidden sm:block">Formula 1</span>
-          </a>
-          <a
-            href="#"
-            className="px-4 flex items-center text-sm font-semibold text-slate-900 hover:text-slate-500"
-          >
-            Endurance
-          </a>
-          <a
-            href="#"
-            className="px-4 flex items-center text-sm font-semibold text-slate-900 hover:text-slate-500"
-          >
-            WRC
-          </a>
-        </div>
-      </section>
-      <NewsGrid />
+      <BigNews news={bigNews} />
+      <CategoryBar />
+      <NewsGrid news={news} />
     </main>
   )
 }

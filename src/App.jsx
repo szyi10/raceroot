@@ -16,6 +16,7 @@ const CreatePost = lazy(() => import("./pages/CreatePost"))
 const UserProfile = lazy(() => import("./pages/UserProfile"))
 const Settings = lazy(() => import("./pages/Settings"))
 const News = lazy(() => import("./pages/News/News"))
+const SelectedNews = lazy(() => import("./pages/News/SelectedNews"))
 const NotFound = lazy(() => import("./pages/NotFound"))
 
 import { ToastContainer } from "react-toastify"
@@ -43,6 +44,7 @@ const App = () => {
           <Route path="/feed/post/:id" element={<SelectedPost />} />
           <Route path="/user/:id" element={<UserProfile />} />
           <Route path="/news" element={<News />} />
+          <Route path="/news/:id" element={<SelectedNews />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

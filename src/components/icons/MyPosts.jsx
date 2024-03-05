@@ -1,4 +1,4 @@
-const Write = () => {
+const MyPosts = () => {
   return (
     <svg
       className="w-6 h-6 text-gray-800 dark:text-white"
@@ -8,14 +8,14 @@ const Write = () => {
       viewBox="0 0 24 24"
     >
       <path
-        className="stroke-slate-700 sm:stroke-white dark:stroke-slate-300"
+        className="stroke-slate-600 dark:stroke-slate-500"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
-        d="m10.8 17.8-6.4 2.1 2.1-6.4m4.3 4.3L19 9a3 3 0 0 0-4-4l-8.4 8.6m4.3 4.3-4.3-4.3m2.1 2.1L15 9.1m-2.1-2 4.2 4.2"
+        d="M10 3v4c0 .6-.4 1-1 1H5m4 8h6m-6-4h6m4-8v16c0 .6-.4 1-1 1H6a1 1 0 0 1-1-1V8c0-.4.1-.6.3-.8l4-4 .6-.2H18c.6 0 1 .4 1 1Z"
       />
     </svg>
   )
 }
 
-export default Write
+export default MyPosts

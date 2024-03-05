@@ -5,10 +5,9 @@ import { navLinks } from "../config/constants"
 import UserContext from "../context/user-context"
 import UIContext from "../context/ui-context"
 
-import { hamburger, search } from "../assets/icons"
-import { avatar1 } from "../assets/images"
+import { hamburger } from "../assets/icons"
+import { Write, Search } from "./icons"
 import ThemeSwitcher from "./ThemeSwitcher"
-import Write from "./icons/Write"
 
 const Navbar = () => {
   const userCtx = useContext(UserContext)
@@ -19,7 +18,7 @@ const Navbar = () => {
   const handleToggle = () => uiCtx.setPopper((prevState) => !prevState)
 
   return (
-    <header className="w-full h-20 border-b border-gray-200 shadow-sm flex items-center">
+    <header className="w-full h-20 border-b border-gray-200 dark:border-neutral-800 dark:bg-neutral-900 shadow-sm flex items-center">
       <nav className="flex items-center justify-between max-container px-4">
         <div className="flex items-center gap-3">
           <button
@@ -36,8 +35,14 @@ const Navbar = () => {
           </button>
 
           <a href="/" className="flex items-center gap-2 cursor-pointer">
-            <img src="logo.svg" alt="Raceroot Logo" height={35} width={35} />
-            <span className="hidden xs:block font-extrabold text-2xl md:text-3xl text-gray-900 font-kanit tracking-wide">
+            <img
+              src="/logo.svg"
+              alt="Raceroot Logo"
+              height={35}
+              width={35}
+              loading="lazy"
+            />
+            <span className="hidden xs:block font-extrabold text-2xl md:text-3xl text-gray-900 dark:text-white font-kanit tracking-wide">
               raceroot
             </span>
           </a>
@@ -47,7 +52,7 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="button-ghost text-slate-500"
+              className="button-ghost text-slate-500 dark:text-slate-300"
             >
               {link.label}
             </a>
@@ -55,7 +60,9 @@ const Navbar = () => {
         </div>
         <div className="flex gap-2">
           <button className="hidden md:block button-icon">
-            <img src={search} alt="Search icon" width={24} height={24} />
+            <div className="w-6 h-6">
+              <Search />
+            </div>
           </button>
           {pathname !== "/" && <ThemeSwitcher />}
           {userCtx.isLoggedIn && (
@@ -71,13 +78,22 @@ const Navbar = () => {
                 onClick={handleToggle}
                 className="aspect-square object-cover rounded-full cursor-pointer w-10 h-10 bg-sky-300 flex items-center justify-center overflow-hidden"
               >
-                <img src={avatar1} width={40} height={40} />
+                <img
+                  src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
+                    userCtx.user.data.photo
+                  }`}
+                  width={40}
+                  height={40}
+                />
               </button>
             </>
           )}
           {!userCtx.isLoggedIn && (
             <>
-              <Link to="/auth#login" className="hidden md:block button-ghost">
+              <Link
+                to="/auth#login"
+                className="hidden md:block button-ghost dark:text-slate-300"
+              >
                 Log in
               </Link>
               <Link to="/auth#signup" className="button-primary">

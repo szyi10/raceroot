@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { Link, useParams } from "react-router-dom"
-import { avatar1 } from "../assets/images"
 
 import Post from "./Feed/Post"
 import Write from "../components/icons/Write"
@@ -65,11 +64,15 @@ const UserProfile = () => {
 
   return (
     <main className="max-w-6xl mx-auto px-4 w-full min-h-screen my-6 justify-between items-start flex">
-      <div className="max-w-4xl w-full flex flex-col gap-6 mx-auto sm:p-8 md:border md:border-gray-200 md:rounded-lg">
+      <div className="max-w-4xl w-full flex flex-col gap-6 mx-auto sm:p-8 md:border md:border-gray-200 dark:border-neutral-800 md:rounded-lg">
         <div className="flex flex-col md:flex-row">
           <div className="flex items-start justify-between">
-            <div className="w-32 sm:w-40 h-32 sm:h-40 rounded-full bg-slate-100 overflow-hidden">
-              <img src={avatar1} />
+            <div className="w-32 sm:w-40 h-32 sm:h-40 rounded-full bg-slate-100 dark:bg-neutral-800 overflow-hidden">
+              <img
+                src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
+                  user.photo
+                }`}
+              />
             </div>
             <Link
               to="/settings"
@@ -81,13 +84,15 @@ const UserProfile = () => {
           </div>
           <div className="flex justify-between items-start flex-1 pt-4 md:pt-0 md:pl-10">
             <div>
-              <h2 className="font-bold text-3xl text-slate-700">
+              <h2 className="font-bold text-3xl text-slate-700 dark:text-slate-200">
                 {!user.displayName ? user.name : user.displayName}
               </h2>
-              <span className="text-sm text-slate-500 font-medium">
+              <span className="text-sm text-slate-500 font-medium dark:text-slate-400">
                 @{user.name}
               </span>
-              <p className="mt-3 text-slate-600">{!user.bio ? "" : user.bio}</p>
+              <p className="mt-3 text-slate-600 dark:text-slate-400">
+                {!user.bio ? "" : user.bio}
+              </p>
             </div>
             <Link
               to="/settings"
@@ -97,16 +102,18 @@ const UserProfile = () => {
             </Link>
           </div>
         </div>
-        <div className="w-full border border-gray-200 rounded-lg py-2 sm:py-4 px-3 sm:px-6 flex items-center justify-center">
+        <div className="w-full border border-gray-200 rounded-lg py-2 sm:py-4 px-3 sm:px-6 flex items-center justify-center dark:border-neutral-800">
           <div>{/* social links */}</div>
           <div className="flex items-center gap-1">
-            <p className="text-sm sm:text-base text-slate-500">
+            <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400">
               Member Since {formattedDate}
             </p>
           </div>
         </div>
         <div id="posts">
-          <h3 className="mb-5 text-xl font-bold text-slate-900">User posts:</h3>
+          <h3 className="mb-5 text-xl font-bold text-slate-900 dark:text-slate-300">
+            User posts:
+          </h3>
 
           {posts.length === 0 && (
             <p className="text-slate-500 text-sm font-medium">
