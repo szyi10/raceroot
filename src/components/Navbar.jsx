@@ -5,9 +5,10 @@ import { navLinks } from "../config/constants"
 import UserContext from "../context/user-context"
 import UIContext from "../context/ui-context"
 
-import { hamburger } from "../assets/icons"
 import { Write, Search } from "./icons"
 import ThemeSwitcher from "./ThemeSwitcher"
+import Avatar from "./Avatar"
+import Menu from "./icons/Menu"
 
 const Navbar = () => {
   const userCtx = useContext(UserContext)
@@ -25,13 +26,7 @@ const Navbar = () => {
             className="flex items-center justify-center py-2"
             onClick={handleOpenMenu}
           >
-            <img
-              src={hamburger}
-              alt="hamburger"
-              height={25}
-              width={25}
-              className="block xl:hidden"
-            />
+            <Menu />
           </button>
 
           <a href="/" className="flex items-center gap-2 cursor-pointer">
@@ -78,7 +73,7 @@ const Navbar = () => {
                 onClick={handleToggle}
                 className="aspect-square object-cover rounded-full cursor-pointer w-10 h-10 flex items-center justify-center overflow-hidden"
               >
-                <img
+                <Avatar
                   src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
                     userCtx.user.data.photo
                   }`}

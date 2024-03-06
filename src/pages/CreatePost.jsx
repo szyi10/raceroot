@@ -49,7 +49,7 @@ const CreatePost = () => {
     <main className="max-w-6xl mx-auto px-4 w-full min-h-screen my-6 justify-between items-start flex">
       <form
         onSubmit={handleSubmit(formSubmit)}
-        className="max-w-[728px] w-full flex flex-col gap-6 mx-auto py-6 px-4 md:border md:border-gray-200 dark:border-neutral-800 md:rounded-lg"
+        className="max-w-[728px] w-full flex flex-col gap-6 mx-auto py-6 sm:px-4 md:border md:border-gray-200 dark:border-neutral-800 md:rounded-lg"
       >
         <div>
           <h2 className="text-2xl font-semibold text-slate-700 dark:text-slate-200">

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { dot, comments } from "../../assets/icons"
+import Avatar from "../../components/Avatar"
 
 const Post = ({ data }) => {
   const formattedDate = new Date(data.createdAt).toLocaleString("en-us", {
@@ -11,14 +12,12 @@ const Post = ({ data }) => {
   return (
     <article className="lg:rounded-lg overflow-hidden border-b lg:border border-gray-200 dark:border-neutral-800 lg:p-6 pt-6 pb-5 flex flex-col gap-4">
       <header className="flex items-center gap-3">
-        <img
+        <Avatar
           src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
             data.user.photo
           }`}
-          alt="User avatar"
           height={40}
           width={40}
-          className="aspect-square object-cover rounded-full cursor-pointer"
         />
         <div>
           <p className="font-semibold text-slate-700 dark:text-slate-300 text-sm">
@@ -35,7 +34,6 @@ const Post = ({ data }) => {
               height={5}
               className="hidden sm:block"
             />
-            {/* <span className="text-sm text-slate-500">Feb 5, 2024</span> */}
             <span className="text-sm text-slate-500 dark:text-slate-400">
               {formattedDate}
             </span>
@@ -61,7 +59,7 @@ const Post = ({ data }) => {
         </span>
         <img src={dot} alt="dot" width={5} height={5} />
         <span className="text-sm text-slate-500 dark:text-slate-400">
-          46 likes
+          0 likes
         </span>
       </footer>
     </article>

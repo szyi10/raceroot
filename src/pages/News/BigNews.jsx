@@ -26,7 +26,7 @@ const BigNews = ({ news }) => {
       </div>
       <div className="bg-blue-500 min-h-96 sm:min-h-[450px] lg:min-h-[600px] w-screen lg:w-2/3 relative overflow-hidden order-1 lg:order-2">
         <img
-          src={news.img}
+          src={`${import.meta.env.VITE_DATABASE_URL}/img/news/${news.img}`}
           alt="Hamilton to Ferrari"
           className="absolute h-full w-screen object-cover"
         />

@@ -1,6 +1,4 @@
 import hamburger from "./hamburger.svg"
-import search from "./search.svg"
-import night from "./night.svg"
 import logoWhite from "./logoWhite.svg"
 import google from "./google.svg"
 import googleLogin from "./googleLogin.svg"
@@ -19,22 +17,11 @@ import sidebar from "./sidebar.svg"
 import sidebarActive from "./sidebarActive.svg"
 import close from "./close.svg"
 import user from "./user.svg"
-import heart from "./heart.svg"
 import pen from "./pen.svg"
-import write from "./write.svg"
-import myPosts from "./myPosts.svg"
-import messages from "./messages.svg"
 import logout from "./logout.svg"
-import settings from "./settings.svg"
-import support from "./support.svg"
-import twitter from "./twitter.svg"
-import youtube from "./youtube.svg"
-import discord from "./discord.svg"
 
 export {
   hamburger,
-  search,
-  night,
   logoWhite,
   google,
   googleLogin,
@@ -53,15 +40,6 @@ export {
   sidebarActive,
   close,
   user,
-  heart,
   pen,
-  write,
-  myPosts,
-  messages,
   logout,
-  settings,
-  support,
-  youtube,
-  discord,
-  twitter,
 }

@@ -1,15 +1,18 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import axios from "axios"
 import { useForm } from "react-hook-form"
 import { useParams } from "react-router-dom"
 import { toast } from "react-toastify"
+import UserContext from "../../../context/user-context"
 
 import Comment from "./Comment"
+import Avatar from "../../../components/Avatar"
 
 const Comments = ({ data }) => {
   const [isFormOpened, setIsFormOpened] = useState(false)
   const { register, handleSubmit } = useForm()
   const { id } = useParams()
+  const userCtx = useContext(UserContext)
 
   const openForm = () => setIsFormOpened(true)
   const closeForm = () => setIsFormOpened(false)
@@ -42,6 +45,8 @@ const Comments = ({ data }) => {
     }
   }
 
+  if (!userCtx) return
+
   return (
     <section className="flex flex-col gap-5">
       {!isFormOpened && (
@@ -50,14 +55,13 @@ const Comments = ({ data }) => {
           className="flex flex-col gap-4 rounded-lg border border-slate-200 dark:border-neutral-800 p-4"
         >
           <div className="flex items-center gap-2 ">
-            <div className="flex items-center justify-center bg-green-500 cursor-pointer w-8 h-8 rounded-full overflow-hidden">
-              <img
-                src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
-                  data.user.photo
-                }`}
-                alt="Avatar"
-              />
-            </div>
+            <Avatar
+              src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
+                userCtx.user.data.photo
+              }`}
+              height={32}
+              width={32}
+            />
             <span className="text-slate-400 text-sm leading-5">
               Add a toughtful comment
             </span>
@@ -71,7 +75,7 @@ const Comments = ({ data }) => {
         >
           <div className="flex flex-col gap-2">
             <span className="text-xs font-medium text-slate-400">
-              Comment as {data.user.name}:
+              Comment as {userCtx.user.data.name}:
             </span>
             <textarea
               {...register("comment", {
@@ -103,7 +107,7 @@ const Comments = ({ data }) => {
         </h2>
       </div>
       <div className="flex flex-col gap-5">
-        {data.length === 0 && (
+        {data.comments.length === 0 && (
           <p className="text-sm font-medium text-slate-500">
             No comments found.
           </p>

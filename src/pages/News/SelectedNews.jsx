@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { Link, useParams } from "react-router-dom"
-import CategoryBar from "./CategoryBar"
 import { time } from "../../assets/icons"
 import ReactMarkdown from "react-markdown"
 
@@ -54,7 +53,6 @@ const SelectedNews = () => {
 
   return (
     <main className="relative min-h-screen w-full overflow-hidden">
-      <CategoryBar />
       <section className="relative max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center lg:mt-6 overflow-hidden gap-4 lg:gap-0">
         <div className="w-full lg:w-1/3 z-10 flex justify-center items-start gap-3 flex-col order-2 lg:order-1">
           <div className="flex gap-2">
@@ -84,7 +82,7 @@ const SelectedNews = () => {
         </div>
         <div className="bg-blue-500 min-h-96 sm:min-h-[450px] lg:min-h-[600px] w-screen lg:w-2/3 relative overflow-hidden order-1 lg:order-2">
           <img
-            src={news.img}
+            src={`${import.meta.env.VITE_DATABASE_URL}/img/news/${news.img}`}
             alt={news.title}
             className="absolute h-full w-screen object-cover"
           />
@@ -127,7 +125,9 @@ const SelectedNews = () => {
                   className="p-2 flex gap-2 shadow-lg border border-slate-100 dark:border-neutral-800 rounded-lg w-full"
                 >
                   <img
-                    src={news.img}
+                    src={`${import.meta.env.VITE_DATABASE_URL}/img/news/${
+                      news.img
+                    }`}
                     alt={news.title}
                     className="hidden sm:block md:aspect-video lg:aspect-[4/3] w-1/3 object-cover rounded"
                   />

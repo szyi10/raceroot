@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import Panel from "./Panel"
+import Avatar from "../../../components/Avatar"
 
 import { Youtube, Discord, Twitter } from "../../../components/icons"
 
@@ -69,14 +70,13 @@ const FeedAside = () => {
             {newPeople.map((user) => (
               <div key={user._id} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full">
-                    <img
-                      src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
-                        user.photo
-                      }`}
-                      className="w-10 h-10 rounded-full"
-                    />
-                  </div>
+                  <Avatar
+                    src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
+                      user.photo
+                    }`}
+                    height={40}
+                    width={40}
+                  />
                   <p className="font-medium text-slate-900 dark:text-slate-400">
                     {!user.displayName ? user.name : user.displayName}
                   </p>

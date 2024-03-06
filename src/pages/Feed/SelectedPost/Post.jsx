@@ -1,6 +1,7 @@
 import { dot } from "../../../assets/icons"
 import Comments from "./Comments"
 import Heart from "../../../components/icons/Heart"
+import Avatar from "../../../components/Avatar"
 
 const Post = ({ data }) => {
   const formattedDate = new Date(data.createdAt).toLocaleString("en-us", {
@@ -13,14 +14,12 @@ const Post = ({ data }) => {
     <section className="max-w-[728px] w-full flex flex-col gap-6 mx-auto">
       <article className="lg:rounded-lg overflow-hidden border-b lg:border border-gray-200 dark:border-neutral-800 lg:p-6 pt-6 pb-5 flex flex-col gap-4">
         <header className="flex items-center gap-3">
-          <img
+          <Avatar
             src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
               data.user.photo
             }`}
-            alt="User avatar"
             height={40}
             width={40}
-            className="aspect-square object-cover rounded-full cursor-pointer"
           />
           <div>
             <p className="font-semibold text-slate-700 dark:text-slate-300 text-sm">
