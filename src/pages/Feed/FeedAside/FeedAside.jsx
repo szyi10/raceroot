@@ -5,6 +5,7 @@ import Panel from "./Panel"
 import Avatar from "../../../components/Avatar"
 
 import { Youtube, Discord, Twitter } from "../../../components/icons"
+import UserBadges from "../../../components/UserBadges"
 
 const FeedAside = () => {
   const [trendingPosts, setTrendingPosts] = useState(null)
@@ -77,9 +78,12 @@ const FeedAside = () => {
                     height={40}
                     width={40}
                   />
-                  <p className="font-medium text-slate-900 dark:text-slate-400">
-                    {!user.displayName ? user.name : user.displayName}
-                  </p>
+                  <div className="flex items-center gap-1">
+                    <p className="font-medium text-slate-900 dark:text-slate-400">
+                      {!user.displayName ? user.name : user.displayName}
+                    </p>
+                    <UserBadges role={user.role} size="sm" />
+                  </div>
                 </div>
                 <Link
                   to={`/user/${user._id}`}

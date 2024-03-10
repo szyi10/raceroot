@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { dot } from "../../../assets/icons"
 import Heart from "../../../components/icons/Heart"
 import Avatar from "../../../components/Avatar"
+import UserBadges from "../../../components/UserBadges"
 
 const Comment = ({ data }) => {
   return (
@@ -17,12 +18,15 @@ const Comment = ({ data }) => {
           />
         </Link>
         <div className="flex flex-grow flex-col min-w-0 gap-0.5 sm:gap-0">
-          <Link
-            to={`/user/${data.user._id}`}
-            className="text-slate-700 font-semibold text-sm max-w-[10rem] sm:max-w-xs truncate dark:text-slate-200"
-          >
-            {!data.user.displayName ? data.user.name : data.user.displayName}
-          </Link>
+          <div className="flex items-center gap-1">
+            <Link
+              to={`/user/${data.user._id}`}
+              className="text-slate-700 font-semibold text-sm max-w-[10rem] sm:max-w-xs truncate dark:text-slate-200"
+            >
+              {!data.user.displayName ? data.user.name : data.user.displayName}
+            </Link>
+            <UserBadges role={data.user.role} size="sm" />
+          </div>
           <p className="text-slate-500 leading-[1.375rem] mt-1 whitespace-pre-line dark:text-slate-400">
             {data.comment}
           </p>

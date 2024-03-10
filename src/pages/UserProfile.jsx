@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom"
 
 import Post from "./Feed/Post"
 import Write from "../components/icons/Write"
+import UserBadges from "../components/UserBadges"
 
 const UserProfile = () => {
   const [user, setUser] = useState(null)
@@ -85,9 +86,12 @@ const UserProfile = () => {
           </div>
           <div className="flex justify-between items-start flex-1 pt-4 md:pt-0 md:pl-10">
             <div>
-              <h2 className="font-bold text-3xl text-slate-700 dark:text-slate-200">
-                {!user.displayName ? user.name : user.displayName}
-              </h2>
+              <div className="flex items-center gap-3">
+                <h2 className="font-bold text-3xl text-slate-700 dark:text-slate-200">
+                  {!user.displayName ? user.name : user.displayName}
+                </h2>
+                <UserBadges role={user.role} />
+              </div>
               <span className="text-sm text-slate-500 font-medium dark:text-slate-400">
                 @{user.name}
               </span>

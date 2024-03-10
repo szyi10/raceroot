@@ -2,6 +2,7 @@ import { dot } from "../../../assets/icons"
 import Comments from "./Comments"
 import Heart from "../../../components/icons/Heart"
 import Avatar from "../../../components/Avatar"
+import UserBadges from "../../../components/UserBadges"
 
 const Post = ({ data }) => {
   const formattedDate = new Date(data.createdAt).toLocaleString("en-us", {
@@ -22,9 +23,12 @@ const Post = ({ data }) => {
             width={40}
           />
           <div>
-            <p className="font-semibold text-slate-700 dark:text-slate-300 text-sm">
-              {data.user.displayName ? data.user.displayName : data.user.name}
-            </p>
+            <div className="flex items-center gap-1">
+              <p className="font-semibold text-slate-700 dark:text-slate-300 text-sm">
+                {data.user.displayName ? data.user.displayName : data.user.name}
+              </p>
+              <UserBadges role={data.user.role} size="sm" />
+            </div>
             <div className="flex flex-row items-center gap-1">
               <span className="text-sm text-slate-500 dark:text-slate-400 hidden sm:block">
                 {data.user.name}
