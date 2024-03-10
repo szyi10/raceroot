@@ -39,7 +39,7 @@ postSchema.virtual("comments", {
 postSchema.pre(/^find/, function (next) {
   this.populate({
     path: "user",
-    select: "name displayName photo",
+    select: "name displayName photo role",
   })
   next()
 })
