@@ -17,6 +17,7 @@ const UserProfile = lazy(() => import("./pages/UserProfile"))
 const Settings = lazy(() => import("./pages/Settings"))
 const News = lazy(() => import("./pages/News/News"))
 const SelectedNews = lazy(() => import("./pages/News/SelectedNews"))
+const CreateNews = lazy(() => import("./pages/News/CreateNews/CreateNews"))
 const NotFound = lazy(() => import("./pages/NotFound"))
 
 import { ToastContainer } from "react-toastify"
@@ -39,6 +40,7 @@ const App = () => {
           <Route element={<PrivateRoutes isLoggedIn={isLoggedIn} />}>
             <Route path="/create" element={<CreatePost />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/create-news" element={<CreateNews />} />
           </Route>
           <Route path="/feed" element={<Feed />} />
           <Route path="/feed/post/:id" element={<SelectedPost />} />

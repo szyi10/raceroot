@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { Helmet } from "react-helmet-async"
 import { logoWhite } from "../assets/icons"
+import image from "../assets/images/feed.jpg"
 
 const Blobs = () => {
   return (
@@ -41,11 +42,11 @@ const HomePage = ({ isLoggedIn }) => {
             Join the community
           </Link>
         </div>
-        <div className="rounded-3xl max-w-[769px] w-full h-[760px] bg-white drop-shadow-sm flex items-center justify-center mx-4">
-          <small className="font-medium text-slate-400 text-sm">
-            placeholder for image from &apos;my feed&apos;.
-          </small>
-        </div>
+        <img
+          src={image}
+          alt="Feed picture"
+          className="rounded-3xl max-w-[769px] w-full h-[760px] bg-white drop-shadow-sm flex items-center justify-center mx-4 overflow-hidden object-cover"
+        />
       </div>
       <Dots />
       <Blobs />

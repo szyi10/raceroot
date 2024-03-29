@@ -47,4 +47,44 @@
   .markdown a {
     @apply underline underline-offset-2 text-blue-600 font-medium;
   }
+
+  .markdown-editor h2 {
+    @apply font-extrabold text-slate-900 text-xl md:text-2xl [&:not(:first-child)]:mt-4 dark:text-slate-200;
+  }
+
+  .markdown-editor p {
+    @apply text-base text-slate-700 leading-7 dark:text-slate-400;
+  }
+
+  .markdown-editor a {
+    @apply underline underline-offset-2 text-blue-600 font-medium;
+  }
+
+  .markdown-editor blockquote {
+    @apply italic;
+  }
+
+  .mdxeditor-toolbar {
+    @apply bg-red-500;
+  }
+}
+
+.mdxeditor-toolbar {
+  background-color: #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+[class^="_selectTrigger"] {
+  background-color: #fff !important;
+  color: #1e293b !important;
+}
+
+html.dark .mdxeditor-toolbar {
+  background-color: #262626 !important;
+  color: #e2e8f0 !important;
+}
+
+html.dark [class^="_selectTrigger"] {
+  background-color: #404040 !important;
+  color: #e2e8f0 !important;
 }

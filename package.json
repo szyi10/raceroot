@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
+    "@mdxeditor/editor": "^2.18.0",
     "axios": "^1.6.7",
     "react": "^18.2.0",
     "react-cookie": "^7.1.0",
