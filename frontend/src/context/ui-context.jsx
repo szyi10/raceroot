@@ -3,8 +3,8 @@ import { useState, createContext } from "react"
 const UIContext = createContext({
   menuOpened: false,
   popperOpened: false,
-  setMenu: (state) => {},
-  setPopper: (state) => {},
+  setMenu: () => {},
+  setPopper: () => {},
 })
 
 export const UIContextProvider = ({ children }) => {
