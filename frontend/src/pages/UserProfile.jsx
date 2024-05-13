@@ -69,12 +69,7 @@ const UserProfile = () => {
         <div className="flex flex-col md:flex-row">
           <div className="flex items-start justify-between">
             <div className="w-32 sm:w-40 h-32 sm:h-40 rounded-full bg-slate-100 dark:bg-neutral-800 overflow-hidden flex items-center justify-center">
-              <img
-                src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
-                  user.photo
-                }`}
-                className="w-full h-full"
-              />
+              <img src={user.photo} className="w-full h-full" />
             </div>
             <Link
               to="/settings"

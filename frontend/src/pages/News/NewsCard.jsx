@@ -14,7 +14,7 @@ const NewsCard = ({ data }) => {
   return (
     <article className="rounded-lg overflow-hidden border border-gray-200 dark:border-neutral-800 shadow-sm flex flex-col">
       <img
-        src={`${import.meta.env.VITE_DATABASE_URL}/img/news/${data.img}`}
+        src={data.img}
         alt={data.title}
         width={1200}
         height={900}

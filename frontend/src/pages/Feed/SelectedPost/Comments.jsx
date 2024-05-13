@@ -55,13 +55,7 @@ const Comments = ({ data }) => {
           className="flex flex-col gap-4 rounded-lg border border-slate-200 dark:border-neutral-800 p-4"
         >
           <div className="flex items-center gap-2 ">
-            <Avatar
-              src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
-                userCtx.user.data.photo
-              }`}
-              height={32}
-              width={32}
-            />
+            <Avatar src={userCtx.user.data.photo} height={32} width={32} />
             <span className="text-slate-400 text-sm leading-5">
               Add a toughtful comment
             </span>

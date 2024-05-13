@@ -9,13 +9,7 @@ const PostAside = ({ data }) => {
       <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-neutral-800 w-full flex flex-col justify-start gap-3.5 py-5 px-6">
         <div className="flex flex-col items-center gap-4">
           <Link to={`/user/${data._id}`}>
-            <Avatar
-              src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
-                data.photo
-              }`}
-              height={96}
-              width={96}
-            />
+            <Avatar src={data.photo} height={96} width={96} />
           </Link>
           <div className="flex flex-col items-center gap-1.5 mb-2.5 text-center">
             <div className="flex items-center">

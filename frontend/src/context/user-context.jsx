@@ -18,7 +18,7 @@ export const UserContextProvider = ({ children }) => {
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.jwt) {
-        console.log("no jwt cookie found")
+        throw new Error("No JWT found.")
       }
 
       const res = await axios({

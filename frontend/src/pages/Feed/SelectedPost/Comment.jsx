@@ -9,13 +9,7 @@ const Comment = ({ data }) => {
     <article className="flex flex-col gap-1">
       <div className="flex gap-3">
         <Link to={`/user/${data.user._id}`}>
-          <Avatar
-            src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
-              data.user.photo
-            }`}
-            height={40}
-            width={40}
-          />
+          <Avatar src={data.user.photo} height={40} width={40} />
         </Link>
         <div className="flex flex-grow flex-col min-w-0 gap-0.5 sm:gap-0">
           <div className="flex items-center gap-1">

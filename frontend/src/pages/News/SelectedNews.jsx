@@ -82,7 +82,7 @@ const SelectedNews = () => {
         </div>
         <div className="bg-blue-500 min-h-96 sm:min-h-[450px] lg:min-h-[600px] w-screen lg:w-2/3 relative overflow-hidden order-1 lg:order-2">
           <img
-            src={`${import.meta.env.VITE_DATABASE_URL}/img/news/${news.img}`}
+            src={news.img}
             alt={news.title}
             className="absolute h-full w-screen object-cover"
           />
@@ -125,9 +125,7 @@ const SelectedNews = () => {
                   className="p-2 flex gap-2 shadow-lg border border-slate-100 dark:border-neutral-800 rounded-lg w-full"
                 >
                   <img
-                    src={`${import.meta.env.VITE_DATABASE_URL}/img/news/${
-                      news.img
-                    }`}
+                    src={news.img}
                     alt={news.title}
                     className="hidden sm:block md:aspect-video lg:aspect-[4/3] w-1/3 object-cover rounded"
                   />

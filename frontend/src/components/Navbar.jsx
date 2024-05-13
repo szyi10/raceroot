@@ -73,13 +73,7 @@ const Navbar = () => {
                 onClick={handleToggle}
                 className="aspect-square object-cover rounded-full cursor-pointer w-10 h-10 flex items-center justify-center overflow-hidden"
               >
-                <Avatar
-                  src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
-                    userCtx.user.data.photo
-                  }`}
-                  width={40}
-                  height={40}
-                />
+                <Avatar src={userCtx.user.data.photo} width={40} height={40} />
               </button>
             </>
           )}

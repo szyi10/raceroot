@@ -71,13 +71,7 @@ const FeedAside = () => {
             {newPeople.map((user) => (
               <div key={user._id} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Avatar
-                    src={`${import.meta.env.VITE_DATABASE_URL}/img/users/${
-                      user.photo
-                    }`}
-                    height={40}
-                    width={40}
-                  />
+                  <Avatar src={user.photo} height={40} width={40} />
                   <div className="flex items-center gap-1">
                     <p className="font-medium text-slate-900 dark:text-slate-400">
                       {!user.displayName ? user.name : user.displayName}
