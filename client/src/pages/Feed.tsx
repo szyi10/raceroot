@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom"
 import { useUser } from "../hooks"
+import GlobalStyle from "../components/GlobalStyle"
 
 const Feed = () => {
   const { isUser, user, logout } = useUser()
 
   return (
-    <div>
+    <GlobalStyle>
       {isUser && (
         <>
           <h3>Hello {user?.username}!</h3>
@@ -22,7 +23,7 @@ const Feed = () => {
           </Link>
         </>
       )}
-    </div>
+    </GlobalStyle>
   )
 }
 
