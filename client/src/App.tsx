@@ -1,16 +1,21 @@
+import { Suspense } from "react"
 import { Route, Routes } from "react-router-dom"
-import { Login, Signup, Home, Feed } from "./pages"
+import { Login, Signup, Home, Feed, NotFound } from "./pages"
+import { Spinner } from "./components/layout"
 
 const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/feed" element={<Feed />} />
-      </Routes>
-    </div>
+    <>
+      <Suspense fallback={<Spinner />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/feed" element={<Feed />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </>
   )
 }
 

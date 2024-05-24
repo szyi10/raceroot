@@ -1,4 +1,7 @@
-export { default as Login } from "./Login"
-export { default as Signup } from "./Signup"
-export { default as Home } from "./Home"
-export { default as Feed } from "./Feed"
+import { lazy } from "react"
+
+export const Login = lazy(() => import("./Login"))
+export const Signup = lazy(() => import("./Signup"))
+export const Home = lazy(() => import("./Home"))
+export const Feed = lazy(() => import("./Feed"))
+export const NotFound = lazy(() => import("./NotFound"))

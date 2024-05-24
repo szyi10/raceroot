@@ -8,7 +8,6 @@ const Navbar = () => {
   const { setProfileMenu } = useProfileMenu()
 
   const openProfileMenu = () => {
-    console.log("a")
     setProfileMenu(true)
   }
 
