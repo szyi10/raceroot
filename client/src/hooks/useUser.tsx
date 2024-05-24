@@ -2,17 +2,18 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useCookies } from "react-cookie"
 import axios from "axios"
-import { toast } from "react-toastify"
+import type { User } from "../types"
 
 const useUser = () => {
-  const [username, setUsername] = useState("")
+  const [user, setUser] = useState<User | null>(null)
+  const [isUser, setIsUser] = useState(false)
   const [cookies, removeCookie] = useCookies(["token"])
   const navigate = useNavigate()
 
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
-        navigate("/login")
+        return
       }
 
       const { data } = await axios.post(
@@ -22,13 +23,17 @@ const useUser = () => {
       )
 
       const { status, user } = data
-      setUsername(user)
+      setUser({
+        username: user,
+        photo: "",
+        role: "user",
+        bio: "",
+      })
+      setIsUser(true)
 
       return status
-        ? toast(`Hello ${user}`, {
-            position: "bottom-right",
-          })
-        : (removeCookie("token", ""), navigate("/login"))
+        ? navigate("/feed")
+        : (removeCookie("token", ""), setIsUser(false), navigate("/login"))
     }
 
     verifyCookie()
@@ -39,7 +44,7 @@ const useUser = () => {
     navigate("/signup")
   }
 
-  return { username, logout }
+  return { user, isUser, logout }
 }
 
 export default useUser

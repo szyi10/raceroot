@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import { Login, Signup, Home } from "./pages"
+import { Login, Signup, Home, Feed } from "./pages"
 
 const App = () => {
   return (
@@ -8,6 +8,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/feed" element={<Feed />} />
       </Routes>
     </div>
   )

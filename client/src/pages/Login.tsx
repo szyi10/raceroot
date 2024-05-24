@@ -2,7 +2,8 @@ import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { ToastContainer, toast } from "react-toastify"
-import useUser from "../hooks/useUser"
+import { useUser } from "../hooks"
+import { EmailInput, PasswordInput, SubmitButton } from "../components/shared"
 
 const Login = () => {
   const [inputValue, setInputValue] = useState({
@@ -10,10 +11,10 @@ const Login = () => {
     password: "",
   })
   const navigate = useNavigate()
-  const { username } = useUser()
+  const { isUser } = useUser()
 
-  if (username) {
-    navigate("/")
+  if (isUser) {
+    navigate("/feed")
   }
 
   const { email, password } = inputValue
@@ -51,7 +52,7 @@ const Login = () => {
 
       const { success, message } = data
       if (success) {
-        navigate("/")
+        // navigate("/")
         handleSuccess(message)
       } else {
         handleError(message)
@@ -122,45 +123,13 @@ const Login = () => {
               onSubmit={handleSubmit}
               className="flex flex-col items-start gap-6"
             >
-              <div className="flex flex-col gap-1 w-full relative">
-                <label htmlFor="email" className="font-semibold">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={email}
-                  onChange={handleOnChange}
-                  className={
-                    "input dark:bg-slate-200  dark:focus:bg-blue-100 dark:text-slate-800"
-                  }
-                />
-              </div>
-              <div className="flex flex-col gap-1 w-full relative">
-                <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="font-semibold">
-                    Password
-                  </label>
-                  <Link
-                    to="/login"
-                    className="text-sm font-medium text-blue-600"
-                  >
-                    Forgot password?
-                  </Link>
-                </div>
-                <input
-                  type="password"
-                  name="password"
-                  value={password}
-                  onChange={handleOnChange}
-                  className={
-                    "input dark:bg-slate-200  dark:focus:bg-blue-100 dark:text-slate-800"
-                  }
-                />
-              </div>
-              <button className="button-primary flex justify-center w-full sm:w-1/2 font-semibold py-4">
-                Sign In
-              </button>
+              <EmailInput value={email} onChange={handleOnChange} />
+              <PasswordInput
+                forgotElement
+                value={password}
+                onChange={handleOnChange}
+              />
+              <SubmitButton text="Sign In" />
             </form>
           </div>
           <p className="absolute bottom-20 lg:top-10 lg:right-20 h-max">
