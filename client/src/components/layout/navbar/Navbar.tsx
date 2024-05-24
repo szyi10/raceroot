@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom"
-import { useUser } from "../../../hooks"
+import { useProfileMenu, useUser } from "../../../hooks"
 import { Bars, Search, Write } from "../../shared/icons"
 import { Avatar } from "../../shared"
 
 const Navbar = () => {
   const { isUser } = useUser()
+  const { setProfileMenu } = useProfileMenu()
+
+  const openProfileMenu = () => {
+    console.log("a")
+    setProfileMenu(true)
+  }
 
   return (
     <header className="w-full h-20 border-b border-gray-200 dark:border-neutral-800 dark:bg-neutral-900 shadow-sm flex items-center">
@@ -52,7 +58,7 @@ const Navbar = () => {
                 <span className="hidden sm:block">New Post</span>
               </Link>
               <button
-                // onClick={handleToggle}
+                onClick={openProfileMenu}
                 className="aspect-square object-cover rounded-full cursor-pointer w-10 h-10 flex items-center justify-center overflow-hidden"
               >
                 {/* TODO: add src */}

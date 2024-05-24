@@ -1,5 +1,6 @@
 import React from "react"
 import { Footer, Navbar } from "./layout"
+import { ProfileMenu } from "./shared"
 
 const GlobalStyle = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -7,6 +8,7 @@ const GlobalStyle = ({ children }: { children: React.ReactNode }) => {
       <Navbar />
       {children}
       <Footer />
+      <ProfileMenu />
     </>
   )
 }

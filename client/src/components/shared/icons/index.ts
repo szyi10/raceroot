@@ -1,3 +1,7 @@
 export { default as Write } from "./Write"
 export { default as Bars } from "./Bars"
 export { default as Search } from "./Search"
+export { default as MyPosts } from "./MyPosts"
+export { default as Messages } from "./Messages"
+export { default as Settings } from "./Settings"
+export { default as Support } from "./Support"
