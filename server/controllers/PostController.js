@@ -2,7 +2,18 @@ const Post = require("../models/PostModel")
 
 module.exports.getAllPosts = async (req, res, next) => {
   try {
-    const posts = await Post.find().populate("likedBy", "username")
+    const { limit, sort } = req.query
+    let query = Post.find().populate("likedBy", "username")
+
+    if (sort) {
+      query = query.sort({ [sort]: -1 })
+    }
+
+    if (limit) {
+      query = query.limit(parseInt(limit))
+    }
+
+    const posts = await query.exec()
     res.json(posts)
   } catch (error) {
     console.error(error)

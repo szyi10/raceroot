@@ -42,6 +42,8 @@ const postSchema = new mongoose.Schema(
   }
 )
 
+postSchema.index({ likes: -1 })
+
 postSchema.pre(/^find/, function (next) {
   this.populate({
     path: "user",
