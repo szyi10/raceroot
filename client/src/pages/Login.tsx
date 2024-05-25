@@ -45,7 +45,7 @@ const Login = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/login",
+        "http://localhost:4000/api/auth/login",
         { ...inputValue },
         { withCredentials: true }
       )
