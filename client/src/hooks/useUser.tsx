@@ -24,16 +24,17 @@ const useUser = () => {
 
       const { status, user } = data
       setUser({
-        username: user,
+        _id: user._id,
+        username: user.username,
         photo: "",
         role: "user",
         bio: "",
       })
       setIsUser(true)
 
-      return status
-        ? navigate("/feed")
-        : (removeCookie("token", ""), setIsUser(false), navigate("/login"))
+      if (!status) {
+        return removeCookie("token", ""), setIsUser(false), navigate("/login")
+      }
     }
 
     verifyCookie()

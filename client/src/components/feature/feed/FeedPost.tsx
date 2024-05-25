@@ -38,12 +38,12 @@ const FeedPost = ({ data }: { data: Post }) => {
         </div>
       </header>
       <section className="flex flex-col gap-1">
-        <Link to={`/feed/post/${data.id}`}>
+        <Link to={`/post/${data.id}`}>
           <h2 className="font-bold text-slate-700 dark:text-slate-300 text-xl sm:text-2xl">
             {data.title}
           </h2>
         </Link>
-        <Link to={`/feed/post/${data.id}`} className="hidden sm:block ">
+        <Link to={`/post/${data.id}`} className="hidden sm:block ">
           <p className="whitespace-pre-line line-clamp-2 text-slate-500 dark:text-slate-400">
             {data.text}
           </p>

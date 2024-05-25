@@ -27,6 +27,15 @@ const commentSchema = new mongoose.Schema(
   }
 )
 
+commentSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "user",
+    // TODO: add more properties
+    select: "username",
+  })
+  next()
+})
+
 // commentSchema.index({ post: 1, user: 1 })
 
 module.exports = mongoose.model("Comment", commentSchema)

@@ -1,4 +1,5 @@
 export interface User {
+  _id: string
   username: string
   photo: string
   role: "user" | "admin"
@@ -15,4 +16,13 @@ export interface Post {
   text: string
   title: string
   user: User
+}
+
+export interface Comment {
+  _id: string
+  id: string
+  text: string
+  post: string
+  user: User
+  createdAt: Date
 }

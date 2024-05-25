@@ -20,6 +20,16 @@ module.exports.getAllPosts = async (req, res, next) => {
   }
 }
 
+module.exports.getPost = async (req, res, next) => {
+  try {
+    const post = await Post.findById(req.params.id)
+    res.json(post)
+  } catch (error) {
+    console.error(error)
+    res.status(400).json({ message: "Failed to fetch post" })
+  }
+}
+
 module.exports.createPost = async (req, res, next) => {
   try {
     const { title, text, likes, createdAt, user } = req.body
