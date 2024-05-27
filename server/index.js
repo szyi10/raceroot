@@ -11,6 +11,7 @@ const DB = MONGODB_URL.replace("<database_password>", database_password)
 const authRoute = require("./routes/AuthRoute")
 const postRoute = require("./routes/PostRoute")
 const commentRoute = require("./routes/CommentRoute")
+const userRoute = require("./routes/UserRoute")
 
 mongoose
   .connect(DB)
@@ -32,6 +33,7 @@ app.use(express.json())
 app.use("/api/auth", authRoute)
 app.use("/api/posts", postRoute)
 app.use("/api/comments", commentRoute)
+app.use("/api/user", userRoute)
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`)
