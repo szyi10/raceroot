@@ -47,7 +47,7 @@ const Signup = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/auth/signup",
+        "https://raceroot-9996db14f64a.herokuapp.com/api/auth/signup",
         { ...inputValue },
         { withCredentials: true }
       )
