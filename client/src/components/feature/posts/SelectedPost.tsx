@@ -20,8 +20,8 @@ const SelectedPost = ({ data }: { data: Post }) => {
   }, [data.likedBy, user])
 
   const handleLike = () => {
-    if (!isLiked) {
-      likePost(data._id, data.user._id)
+    if (!isLiked && user) {
+      likePost(data._id, user._id)
       setIsLiked(true)
     }
   }

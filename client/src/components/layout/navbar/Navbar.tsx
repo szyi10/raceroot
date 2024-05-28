@@ -19,7 +19,10 @@ const Navbar = () => {
             <Bars />
           </button>
 
-          <a href="/" className="flex items-center gap-2 cursor-pointer">
+          <Link
+            to={isUser ? "/feed" : "/"}
+            className="flex items-center gap-2 cursor-pointer"
+          >
             <img
               src="/logo.svg"
               alt="Raceroot Logo"
@@ -30,11 +33,11 @@ const Navbar = () => {
             <span className="hidden xs:block font-extrabold text-2xl md:text-3xl text-gray-900 dark:text-white font-kanit tracking-wide">
               raceroot
             </span>
-          </a>
+          </Link>
         </div>
         <div className="hidden xl:flex gap-6 w-1/4">
           <Link
-            to="/search"
+            to="/feed"
             className="button w-full border border-gray-200 dark:border-neutral-800 flex items-center cursor-text hover:bg-gray-200 transition-colors"
           >
             <Search />
@@ -47,7 +50,7 @@ const Navbar = () => {
               <Search />
             </div>
           </button>
-          {isUser && (
+          {user && (
             <>
               <Link
                 to="/create"

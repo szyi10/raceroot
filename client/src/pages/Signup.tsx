@@ -26,7 +26,7 @@ const Signup = () => {
 
     setInputValue({
       ...inputValue,
-      [name]: value,
+      [name.toLowerCase()]: value,
     })
   }
 
