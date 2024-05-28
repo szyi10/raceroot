@@ -4,7 +4,8 @@ import UserOption from "./UserOption"
 import PremiumOption from "./PremiumOption"
 import LogoutOption from "./LogoutOption"
 import MenuOption from "./MenuOption"
-import { Messages, MyPosts, Settings, Support } from "../icons"
+import { Messages, MyPosts, Settings, Sun, Support } from "../icons"
+import { useEffect } from "react"
 
 const Separator = () => {
   return <div className="h-px bg-slate-200 dark:bg-neutral-800" />
@@ -15,6 +16,35 @@ const ProfileMenu = () => {
 
   const handleClickOutside = () => setProfileMenu(false)
   const closeMenu = () => setProfileMenu(false)
+
+  const resetStorage = (theme: string) => {
+    localStorage.removeItem("theme")
+    localStorage.setItem("theme", theme)
+  }
+
+  const toggleTheme = () => {
+    if (localStorage.theme === "light") {
+      resetStorage("dark")
+      document.documentElement.classList.add("dark")
+      return
+    }
+
+    if (localStorage.theme === "dark") {
+      resetStorage("light")
+      document.documentElement.classList.remove("dark")
+      return
+    }
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem("theme") === null) {
+      localStorage.setItem("theme", "light")
+    }
+
+    if (localStorage.theme === "dark") {
+      document.documentElement.classList.add("dark")
+    }
+  }, [])
 
   return (
     <>
@@ -38,8 +68,11 @@ const ProfileMenu = () => {
         <div onClick={handleClickOutside} className="hidden sm:block w-full" />
         <div className="w-full sm:w-[360px] sm:max-w-72 bg-white rounded-lg overflow-hidden border-b border border-gray-200 flex flex-col gap-2 py-2 dark:bg-neutral-900 dark:border-neutral-800">
           <UserOption />
-          {/* TODO: make onClick function and add new icon */}
-          <MenuOption icon={<Settings />} label="Dark mode" />
+          <MenuOption
+            icon={<Sun />}
+            label="Change mode"
+            onClick={toggleTheme}
+          />
           <Separator />
           <PremiumOption />
           <Separator />

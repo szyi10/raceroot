@@ -44,7 +44,7 @@ const MenuOption = ({
   return (
     <div
       onClick={onClick}
-      className="w-full focus:outline-none focus:bg-slate-100 hover:bg-slate-100 py-2 px-4 flex gap-2 dark:focus:bg-neutral-800 dark:hover:bg-neutral-800"
+      className="w-full focus:outline-none focus:bg-slate-100 hover:bg-slate-100 py-2 px-4 flex gap-2 dark:focus:bg-neutral-800 dark:hover:bg-neutral-800  cursor-pointer"
     >
       {optionBody}
     </div>
