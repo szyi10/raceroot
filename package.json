@@ -1,7 +1,8 @@
 {
   "scripts": {
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "server": "cd server && nodemon index.js",
+    "start": "cd server && node.index.js",
+    "dev:start": "concurrently --kill-others-on-fail \"npm run dev:server\" \"npm run client\"",
+    "dev:server": "cd server && nodemon index.js",
     "client": "cd client && npm run dev"
   },
   "dependencies": {
