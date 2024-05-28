@@ -1,10 +1,10 @@
 import { twMerge } from "tailwind-merge"
-import { useProfileMenu } from "../../../hooks"
+import { useProfileMenu, useUser } from "../../../hooks"
 import UserOption from "./UserOption"
 import PremiumOption from "./PremiumOption"
 import LogoutOption from "./LogoutOption"
 import MenuOption from "./MenuOption"
-import { Messages, MyPosts, Settings, Sun, Support } from "../icons"
+import { MyPosts, Settings, Sun, Support } from "../icons"
 import { useEffect } from "react"
 
 const Separator = () => {
@@ -13,6 +13,7 @@ const Separator = () => {
 
 const ProfileMenu = () => {
   const { profileOpened, setProfileMenu } = useProfileMenu()
+  const { user } = useUser()
 
   const handleClickOutside = () => setProfileMenu(false)
   const closeMenu = () => setProfileMenu(false)
@@ -80,14 +81,7 @@ const ProfileMenu = () => {
             icon={<MyPosts />}
             label="My posts"
             asLink
-            href="/user/<id>#posts"
-            onClick={closeMenu}
-          />
-          <MenuOption
-            icon={<Messages />}
-            label="Messages"
-            asLink
-            href="/messages"
+            href={`/user/${user?._id}#posts`}
             onClick={closeMenu}
           />
           <MenuOption

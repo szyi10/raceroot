@@ -52,7 +52,12 @@ const FeedPost = ({ data }: { data: Post }) => {
       <footer className="flex items-center gap-2">
         <span className="text-sm text-slate-500 dark:text-slate-400 font-semibold flex items-center gap-1">
           <img src="/icons/comments.svg" alt="dot" width={20} height={20} />
-          Discuss
+          <Link
+            to={`/post/${data.id}`}
+            className="hover:underline decoration-slate-400"
+          >
+            Discuss
+          </Link>
         </span>
         <img src="/icons/dot.svg" alt="dot" width={5} height={5} />
         <span className="text-sm text-slate-500 dark:text-slate-400">
