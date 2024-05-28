@@ -46,8 +46,7 @@ const CommentForm = ({ postId }: FormProps) => {
         className="flex flex-col gap-4 rounded-lg border border-slate-200 dark:border-neutral-800 p-4"
       >
         <div className="flex items-center gap-2 ">
-          {/* TODO: Add src */}
-          <Avatar size={32} />
+          <Avatar src={user?.photo} size={32} />
           <span className="text-slate-400 text-sm leading-5">
             Add a toughtful comment
           </span>

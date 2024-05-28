@@ -9,6 +9,7 @@ import {
   Post,
   Profile,
   NewPost,
+  Settings,
 } from "./pages"
 import { Spinner } from "./components/layout"
 
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/post/:postId" element={<Post />} />
           <Route path="/create" element={<NewPost />} />
           <Route path="/user/:userId" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

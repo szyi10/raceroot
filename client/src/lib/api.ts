@@ -152,3 +152,26 @@ export const fetchUserProfile = async (
     return null
   }
 }
+
+export const updateUser = async (
+  userId: string,
+  data: {
+    nickname?: string
+    photo?: string
+    bio?: string
+  }
+) => {
+  try {
+    const res = await axios({
+      method: "PATCH",
+      url: `${API_URL}/user/${userId}`,
+      data,
+    })
+
+    if (res.status === 200) {
+      console.log("User updated")
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}

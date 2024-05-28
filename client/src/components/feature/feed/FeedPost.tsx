@@ -12,12 +12,11 @@ const FeedPost = ({ data }: { data: Post }) => {
   return (
     <article className="lg:rounded-lg overflow-hidden border-b lg:border border-gray-200 dark:border-neutral-800 lg:p-6 pt-6 pb-5 flex flex-col gap-4">
       <header className="flex items-center gap-3">
-        {/* TODO: Add src */}
-        <Avatar size={40} />
+        <Avatar src={data.user.photo} size={40} />
         <div>
           <div className="flex items-center gap-1">
             <p className="font-semibold text-slate-700 dark:text-slate-300 text-sm">
-              {data.user.username}
+              {data.user.nickname}
             </p>
           </div>
           <div className="flex flex-row items-center gap-1">

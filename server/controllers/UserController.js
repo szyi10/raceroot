@@ -22,3 +22,17 @@ module.exports.getUser = async (req, res, next) => {
     res.status(400).json({ message: "Failed to fetch user" })
   }
 }
+
+module.exports.updateUser = async (req, res, next) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    })
+
+    res.json(user)
+  } catch (error) {
+    console.error(SyntaxError)
+    res.status(400).json({ message: "Failed to fetch user" })
+  }
+}

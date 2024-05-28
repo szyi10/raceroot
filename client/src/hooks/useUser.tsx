@@ -26,9 +26,9 @@ const useUser = () => {
       setUser({
         _id: user._id,
         username: user.username,
-        photo: "",
-        role: "user",
-        bio: "",
+        photo: user.photo,
+        nickname: user.nickname,
+        bio: user.bio,
       })
       setIsUser(true)
 

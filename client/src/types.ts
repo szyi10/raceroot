@@ -2,9 +2,9 @@ export interface User {
   _id: string
   username: string
   photo: string
-  role: "user" | "admin"
+  nickname: string
   bio: string
-  createdAt: Date
+  createdAt?: Date
 }
 
 export interface Post {

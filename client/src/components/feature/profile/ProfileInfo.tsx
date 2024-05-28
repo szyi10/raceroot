@@ -7,11 +7,7 @@ const ProfileInfo = ({ user }: { user: User }) => {
     <div className="flex flex-col md:flex-row">
       <div className="flex items-start justify-between">
         <div className="w-32 sm:w-40 h-32 sm:h-40 rounded-full bg-slate-100 dark:bg-neutral-800 overflow-hidden flex items-center justify-center">
-          {/* TODO: Add user photo */}
-          <img
-            src="https://images.pexels.com/photos/2748242/pexels-photo-2748242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            className="w-full h-full"
-          />
+          <img src={user.photo} className="w-full h-full" />
         </div>
         <Link
           to="/settings"
@@ -25,7 +21,7 @@ const ProfileInfo = ({ user }: { user: User }) => {
         <div>
           <div className="flex items-center gap-3">
             <h2 className="font-bold text-3xl text-slate-700 dark:text-slate-200">
-              {user.username}
+              {user.nickname}
             </h2>
           </div>
           <span className="text-sm text-slate-500 font-medium dark:text-slate-400">

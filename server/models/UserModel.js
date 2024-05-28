@@ -15,6 +15,17 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Your password is required"],
   },
+  bio: {
+    type: String,
+  },
+  nickname: {
+    type: String,
+  },
+  photo: {
+    type: String,
+    default:
+      "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg",
+  },
   createdAt: {
     type: Date,
     default: new Date(),
@@ -22,6 +33,10 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.pre("save", async function () {
+  if (!this.nickname) {
+    this.nickname = this.username
+  }
+
   this.password = await bcrypt.hash(this.password, 12)
 })
 

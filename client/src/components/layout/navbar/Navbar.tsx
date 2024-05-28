@@ -4,7 +4,7 @@ import { Bars, Search, Write } from "../../shared/icons"
 import { Avatar } from "../../shared"
 
 const Navbar = () => {
-  const { isUser } = useUser()
+  const { user, isUser } = useUser()
   const { setProfileMenu } = useProfileMenu()
 
   const openProfileMenu = () => {
@@ -60,8 +60,7 @@ const Navbar = () => {
                 onClick={openProfileMenu}
                 className="aspect-square object-cover rounded-full cursor-pointer w-10 h-10 flex items-center justify-center overflow-hidden"
               >
-                {/* TODO: add src */}
-                <Avatar size={40} />
+                <Avatar src={user?.photo} size={40} />
               </button>
             </>
           )}

@@ -8,8 +8,7 @@ const Comment = ({ data }: { data: Comment }) => {
     <article className="flex flex-col gap-1">
       <div className="flex gap-3">
         <Link to={`/user/${data.user._id}`}>
-          {/* TODO: Add src */}
-          <Avatar size={40} />
+          <Avatar src={data.user.photo} size={40} />
         </Link>
         <div className="flex flex-grow flex-col min-w-0 gap-0.5 sm:gap-0">
           <div className="flex items-center gap-1">
@@ -17,7 +16,7 @@ const Comment = ({ data }: { data: Comment }) => {
               to={`/user/${data.user._id}`}
               className="text-slate-700 font-semibold text-sm max-w-[10rem] sm:max-w-xs truncate dark:text-slate-200"
             >
-              {data.user.username}
+              {data.user.nickname}
             </Link>
           </div>
           <p className="text-slate-500 leading-[1.375rem] mt-1 whitespace-pre-line dark:text-slate-400">

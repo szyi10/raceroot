@@ -47,14 +47,13 @@ postSchema.index({ likes: -1 })
 postSchema.pre(/^find/, function (next) {
   this.populate({
     path: "user",
-    // TODO: add more properties
-    select: "username",
+    select: "username photo nickname",
   }).populate({
     path: "comments",
     select: "text user",
     populate: {
       path: "user",
-      select: "username",
+      select: "username photo nickname",
     },
   })
   next()
