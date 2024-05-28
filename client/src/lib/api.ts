@@ -21,6 +21,26 @@ export const fetchPosts = async (): Promise<Post[]> => {
   }
 }
 
+export const createPost = async (data: {
+  text: string
+  title: string
+  user: string
+}) => {
+  try {
+    const res = await axios({
+      method: "POST",
+      url: `${API_URL}/posts`,
+      data,
+    })
+
+    if (res.status === 201) {
+      console.log("Post created")
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const fetchTrendingPosts = async (): Promise<Post[]> => {
   try {
     const res = await axios({
