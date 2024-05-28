@@ -1,6 +1,6 @@
 import { Suspense } from "react"
 import { Route, Routes } from "react-router-dom"
-import { Login, Signup, Home, Feed, NotFound, Post } from "./pages"
+import { Login, Signup, Home, Feed, NotFound, Post, Profile } from "./pages"
 import { Spinner } from "./components/layout"
 
 const App = () => {
@@ -13,6 +13,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/feed" element={<Feed />} />
           <Route path="/post/:postId" element={<Post />} />
+          <Route path="/user/:userId" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

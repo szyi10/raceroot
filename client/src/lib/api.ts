@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Comment, Post } from "../types"
+import { Comment, Post, Profile } from "../types"
 
 const API_URL = "http://localhost:4000/api"
 
@@ -110,5 +110,25 @@ export const createComment = async (
     }
   } catch (error) {
     console.log(error)
+  }
+}
+
+export const fetchUserProfile = async (
+  userId: string
+): Promise<Profile | null> => {
+  try {
+    const res = await axios({
+      method: "GET",
+      url: `${API_URL}/user/${userId}`,
+    })
+
+    if (res.status === 200) {
+      return res.data
+    } else {
+      return null
+    }
+  } catch (error) {
+    console.log(error)
+    return null
   }
 }

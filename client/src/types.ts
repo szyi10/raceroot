@@ -4,12 +4,13 @@ export interface User {
   photo: string
   role: "user" | "admin"
   bio: string
+  createdAt: Date
 }
 
 export interface Post {
   _id: string
   id: string
-  comments: []
+  comments: Comment[]
   createdAt: Date
   likedBy: []
   likes: number
@@ -25,4 +26,8 @@ export interface Comment {
   post: string
   user: User
   createdAt: Date
+}
+
+export interface Profile extends User {
+  posts: Post[]
 }

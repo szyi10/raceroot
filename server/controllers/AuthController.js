@@ -54,6 +54,7 @@ module.exports.Login = async (req, res, next) => {
       .status(201)
       .json({ message: "User logged in successfully", success: true })
   } catch (error) {
-    console.error(error)
+    res.status(400).json({ message: "Failed to login." })
+    console.log(error)
   }
 }
