@@ -23,7 +23,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://raceroot.onrender.com",
-      "https://raceroot.vercel.app/",
+      "https://raceroot.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: [
