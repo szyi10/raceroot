@@ -22,6 +22,13 @@ app.use(
   cors({
     origin: ["http://localhost:5173", "https://raceroot.onrender.com"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: [
+      "Origin",
+      "X-Requested-With",
+      "Content-Type",
+      "Accept",
+      "Authorization",
+    ],
     credentials: true,
   })
 )
