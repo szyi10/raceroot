@@ -20,10 +20,7 @@ mongoose
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://raceroot-9996db14f64a.herokuapp.com",
-    ],
+    origin: ["http://localhost:5173", "https://raceroot.onrender.com"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })

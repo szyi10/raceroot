@@ -1,7 +1,7 @@
 import axios from "axios"
 import { Comment, Post, Profile } from "../types"
 
-const API_URL = "https://raceroot-9996db14f64a.herokuapp.com/api"
+const API_URL = "https://raceroot.onrender.com/api"
 
 export const fetchPosts = async (): Promise<Post[]> => {
   try {
