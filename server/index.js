@@ -20,7 +20,11 @@ mongoose
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://raceroot.onrender.com"],
+    origin: [
+      "http://localhost:5173",
+      "https://raceroot.onrender.com",
+      "https://raceroot.vercel.app/",
+    ],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: [
       "Origin",
