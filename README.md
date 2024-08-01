@@ -1,72 +1,77 @@
 # Raceroot
 
-## Demo link:
+## Overview
+
+This repository contains the code for the Raceroot application, including frontend and backend. <br>
+**Raceroot** is fullstack application for online forum & blog for racing community.
+
 Access raceroot site at [raceroot.vercel.app](https://raceroot.vercel.app/)
 
-## Table of Content:
-- [About The App](#about-the-app)
-- [Screenshots](#screenshots)
-- [Technologies](#technologies)
-- [API Endpoints](#api)
-- [Setup](#setup)
-- [Features](#features)
-
-## About The App
-Raceroot is a lively online forum created for lively conversations and quick sharing of brief messages in a friendly digital community. The platform is designed to be user-friendly, allowing users to easily take part in discussions. Additionally, Raceroot includes authentication features, ensuring a secure and personalized experience for users.
+![Images](/client/public/images/feed.jpg)
 
 
-## Screenshots
-![Images](/frontend/screenshots/raceroot.png)
+## Project Structure
 
+```bash
+/raceroot
+    /client     # React + Tailwind CSS
+    /backend    # Node.js + Express + MongoDB
+```
 
 ## Technologies
 
-Client: `React`, `Axios`, `Vite`, `ESLint`, `React Hook Form`, `React Toasitfy`, `React Router`, `Tailwind CSS`, `Tailwind Merge` <br>
-Server: `Node.js`, `Express.js`, `Mongoose` <br>
-Database: `MongoDB`
+- **Frontend:** React, Tailwind CSS, React Hook Form, React Router
+- **Backend:** Node.js, Express.js, PostgreSQL, MongoDB
+- **Hosting:** Vercel, Render
 
-<a name="api"></a>
-## API Endpoints
-https://documenter.getpostman.com/view/19180706/2sA2rFTLw2
+## Installation
 
+### Frontend
 
-<a name="setup"></a>
-## Setup
-### Client Setup
-1. Download all modules
+1. Navigate to the frontend directory:
 
-```
-$ cd frontend
-$ npm i
-$ npm run dev
+```bash
+cd client
 ```
 
-### Server Setup
-1. Download all modules
-```
-$ cd backend
-$ npm i
-$ npm start
+2. Install dependencies:
+
+```bash
+npm install
 ```
 
-2. Create and configure `config.env` file in backend folder:
-```env
-NODE_ENV=development
-PORT=3000
+3. Configure enviroment variables: <br>
+    Create a `.env` file based on `.env.exmaple` and configure the variables.
 
-DATABASE=
-DATABASE_LOCAL=
-DATABASE_PASSWORD=
+4. Start the development server:
 
-JWT_SECRET=
-JWT_EXPIRES_IN=            // 90d is recommended
-JWT_COOKIE_EXPIRES_IN=     // 90 is recommended
+```bash
+npm run dev
 ```
 
-## Features
-- Creating user
-- Editing profile
-- Creating posts and comments
+### Backend
 
-## License
-MIT License @ [szyi](https://www.szyi.xyz)
+1. Navigate to the frontend directory:
+
+```bash
+cd server
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Configure enviroment variables: <br>
+    Create a `.env` file based on `.env.exmaple` and configure the variables.
+
+4. Start the development server:
+
+```bash
+node index.js
+```
+
+## Scripts
+
+Each subproject (frontend, backend) has its own set of scripts for development, building and testing. Refer to their respective README.md files for more details.
